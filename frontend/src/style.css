@@ -1,42 +1,97 @@
+/* ==========================================================================
+   SECURE COLLECTOR DAO - GOVERNMENT & INSTITUTIONAL PORTAL STYLESHEET
+   Thiết kế chuẩn Cổng Thông Tin Hành Chính & Thể Chế Tài Chính
+   Bảng màu trung tính (Trắng - Đen - Xám), Không màu Neon, Hỗ trợ Giao diện Tối
+   ========================================================================== */
+
 :root {
-  --bg-base: #080c14;
-  --bg-surface: #0e1524;
-  --bg-card: rgba(18, 27, 46, 0.7);
-  --bg-card-hover: rgba(25, 38, 65, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.03);
+  /* Bảng màu trung tính Sáng (Light Mode) */
+  --gov-bg: #f8fafc;
+  --gov-card-bg: #ffffff;
+  --gov-header-bg: #ffffff;
+  --gov-border: #e2e8f0;
+  --gov-border-strong: #cbd5e1;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 242, 254, 0.35);
-  --border-focus: #00f2fe;
+  --gov-text-title: #0f172a;     /* Đen than chì */
+  --gov-text-body: #334155;      /* Xám đậm dễ đọc */
+  --gov-text-muted: #64748b;     /* Xám ghi phụ đề */
 
-  --accent-cyan: #00f2fe;
-  --accent-cyan-dim: rgba(0, 242, 254, 0.15);
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
-  --accent-purple-dim: rgba(139, 92, 246, 0.15);
-  --accent-emerald: #10b981;
-  --accent-emerald-dim: rgba(16, 185, 129, 0.15);
-  --accent-rose: #f43f5e;
-  --accent-rose-dim: rgba(244, 63, 94, 0.15);
-  --accent-amber: #f59e0b;
-  --accent-amber-dim: rgba(245, 158, 11, 0.15);
+  --gov-primary: #0f172a;        /* Nút chính: Đen chì thanh lịch */
+  --gov-primary-hover: #1e293b;
+  --gov-primary-text: #ffffff;
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --gov-secondary-bg: #f1f5f9;   /* Nút phụ: Xám nhạt */
+  --gov-secondary-hover: #e2e8f0;
+  --gov-secondary-text: #0f172a;
+  --gov-secondary-border: #cbd5e1;
 
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Màu chỉ báo trạng thái chuẩn thể chế (Muted/Institutional, Không Neon) */
+  --status-success-bg: #f0fdf4;
+  --status-success-text: #166534;
+  --status-success-border: #bbf7d0;
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
+  --status-warning-bg: #fffbeb;
+  --status-warning-text: #92400e;
+  --status-warning-border: #fde68a;
 
-  --shadow-glow-cyan: 0 0 25px rgba(0, 242, 254, 0.2);
-  --shadow-glow-purple: 0 0 25px rgba(139, 92, 246, 0.2);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --status-danger-bg: #fef2f2;
+  --status-danger-text: #991b1b;
+  --status-danger-border: #fecaca;
+
+  --status-info-bg: #f0f9ff;
+  --status-info-text: #075985;
+  --status-info-border: #bae6fd;
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* Bảng màu trung tính Tối (Dark Mode) */
+[data-theme="dark"] {
+  --gov-bg: #090d16;
+  --gov-card-bg: #121824;
+  --gov-header-bg: #0f1522;
+  --gov-border: #232d3f;
+  --gov-border-strong: #334155;
+
+  --gov-text-title: #f1f5f9;
+  --gov-text-body: #cbd5e1;
+  --gov-text-muted: #8392a5;
+
+  --gov-primary: #e2e8f0;
+  --gov-primary-hover: #ffffff;
+  --gov-primary-text: #0f172a;
+
+  --gov-secondary-bg: #1e293b;
+  --gov-secondary-hover: #293548;
+  --gov-secondary-text: #f1f5f9;
+  --gov-secondary-border: #334155;
+
+  --status-success-bg: #062312;
+  --status-success-text: #4ade80;
+  --status-success-border: #14532d;
+
+  --status-warning-bg: #291805;
+  --status-warning-text: #fbbf24;
+  --status-warning-border: #78350f;
+
+  --status-danger-bg: #2b0b0b;
+  --status-danger-text: #f87171;
+  --status-danger-border: #7f1d1d;
+
+  --status-info-bg: #082133;
+  --status-info-text: #38bdf8;
+  --status-info-border: #0c4a6e;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -46,684 +101,797 @@
 }
 
 body {
-  background-color: var(--bg-base);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.06) 0px, transparent 60%);
-  background-attachment: fixed;
-  color: var(--text-main);
+  background-color: var(--gov-bg);
+  color: var(--gov-text-body);
   font-family: var(--font-sans);
-  min-height: 100vh;
+  font-size: 14px;
   line-height: 1.6;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-base);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 242, 254, 0.4);
+/* Dải kẻ trên cùng kiểu quốc gia */
+.top-stripe {
+  height: 3px;
+  background: #334155;
 }
 
-/* App Container */
-.app-container {
-  max-width: 1360px;
+/* Header chuẩn trang thông tin thể chế */
+.gov-header {
+  background: var(--gov-header-bg);
+  border-bottom: 1px solid var(--gov-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+
+.gov-header-inner {
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 24px 20px 80px 20px;
-}
-
-/* Header & Navigation */
-.header {
+  padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
-  padding: 18px 24px;
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.brand {
+.brand-section {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.brand-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  box-shadow: var(--shadow-glow-cyan);
-}
-
-.brand h1 {
-  font-size: 1.25rem;
+.brand-text h1 {
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
-  background: linear-gradient(120deg, #fff 40%, var(--accent-cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--gov-text-title);
+  letter-spacing: 0.3px;
+  line-height: 1.25;
 }
 
-.brand .badge {
-  font-size: 0.72rem;
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  background: var(--accent-emerald-dim);
-  color: var(--accent-emerald);
-  font-weight: 600;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  margin-left: 8px;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* Persona Selector */
-.persona-picker {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  padding: 6px 14px;
-}
-
-.persona-label {
+.brand-text p {
   font-size: 0.8rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  color: var(--gov-text-muted);
 }
 
-.persona-select {
-  background: transparent;
-  color: var(--text-main);
-  border: none;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  outline: none;
-}
-
-.persona-select option {
-  background: var(--bg-surface);
-  color: var(--text-main);
-}
-
-/* Nav Tabs */
-.nav-tabs {
-  display: flex;
-  gap: 8px;
-  background: var(--bg-surface);
-  padding: 6px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 28px;
-}
-
-.nav-tab {
-  flex: 1;
+/* Thanh điều khiển Header: Mode Switcher & Dark Mode Toggle */
+.header-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: var(--transition);
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.nav-tab:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.nav-tab.active {
-  color: #fff;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(139, 92, 246, 0.25));
-  border: 1px solid rgba(0, 242, 254, 0.4);
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
-}
-
-/* Grid & Cards */
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(1, 1fr); }
-  .grid-2 { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 640px) {
-  .grid-4, .grid-2 { grid-template-columns: 1fr; }
-  .header { flex-direction: column; gap: 16px; align-items: flex-start; }
-  .nav-tabs { flex-wrap: wrap; border-radius: var(--radius-md); }
-}
-
-.glass-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-card);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.6);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.card-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.card-value {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: var(--text-main);
-  font-family: var(--font-mono);
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.card-subtext {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  margin-top: 6px;
-}
-
-/* Progress bar */
-.progress-container {
-  margin-top: 14px;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  font-family: var(--font-mono);
-  margin-bottom: 6px;
-}
-
-.progress-bar-bg {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.progress-bar-fill.warning {
-  background: linear-gradient(90deg, var(--accent-amber), var(--accent-rose));
-}
-
-/* Status Indicator */
-.status-pill {
+/* Nút chuyển chế độ FE vs Web3 */
+.mode-toggle-group {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.84rem;
-  font-weight: 700;
-}
-
-.status-pill.online {
-  background: var(--accent-emerald-dim);
-  color: var(--accent-emerald);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.status-pill.paused {
-  background: var(--accent-rose-dim);
-  color: var(--accent-rose);
-  border: 1px solid rgba(244, 63, 94, 0.4);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 10px currentColor;
-  animation: pulseDot 2s infinite;
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
+  background: var(--gov-secondary-bg);
+  padding: 3px;
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
+  border: 1px solid var(--gov-border);
+}
+
+.mode-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
   border: none;
-  transition: var(--transition);
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent-cyan), #00b4d8);
-  color: #04101e;
-  box-shadow: var(--shadow-glow-cyan);
-}
-.btn-primary:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
-  border: 1px solid var(--border-subtle);
-}
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.btn-danger {
-  background: linear-gradient(135deg, var(--accent-rose), #be123c);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
-}
-.btn-danger:hover {
-  filter: brightness(1.15);
-}
-
-.btn-sm {
-  padding: 6px 12px;
+  background: transparent;
+  color: var(--gov-text-muted);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mode-toggle-btn.active {
+  background: var(--gov-card-bg);
+  color: var(--gov-text-title);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gov-border);
+}
+
+/* Nút Dark Mode */
+.btn-theme-toggle {
+  background: var(--gov-secondary-bg);
+  border: 1px solid var(--gov-border);
+  color: var(--gov-text-body);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-theme-toggle:hover {
+  background: var(--gov-secondary-hover);
+}
+
+/* Container chính */
+.portal-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px 60px 20px;
+}
+
+/* Banner thông báo chế độ hoạt động */
+.mode-banner {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gov-border);
+  background: var(--gov-card-bg);
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-left: 4px solid var(--gov-text-title);
+}
+
+.mode-banner.live-mode {
+  border-left-color: #166534;
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+  border-color: var(--status-success-border);
+}
+
+/* Thanh điều hướng các phân hệ (Tabs) */
+.gov-nav {
+  display: flex;
+  border-bottom: 1px solid var(--gov-border);
+  margin-bottom: 20px;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.gov-nav-item {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gov-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.gov-nav-item:hover {
+  color: var(--gov-text-title);
+}
+
+.gov-nav-item.active {
+  color: var(--gov-text-title);
+  border-bottom-color: var(--gov-text-title);
+}
+
+/* Thẻ khối (Cards) */
+.gov-card {
+  background: var(--gov-card-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.gov-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gov-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gov-text-title);
+}
+
+.gov-card-subtitle {
+  font-size: 0.82rem;
+  color: var(--gov-text-muted);
+  margin-top: 2px;
+}
+
+/* Bố cục lưới */
+.gov-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.gov-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Thẻ thống kê (Stat Cards) */
+.stat-card {
+  background: var(--gov-secondary-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gov-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.stat-value {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--gov-text-title);
+  margin: 4px 0 2px 0;
+  font-family: var(--font-mono);
+}
+
+.stat-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gov-text-muted);
+}
+
+.stat-hint {
+  font-size: 0.76rem;
+  color: var(--gov-text-muted);
+}
+
+/* Huy hiệu (Badges) */
+.gov-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--gov-border);
+  background: var(--gov-secondary-bg);
+  color: var(--gov-text-title);
+}
+
+.gov-badge.success {
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+  border-color: var(--status-success-border);
+}
+
+.gov-badge.warning {
+  background: var(--status-warning-bg);
+  color: var(--status-warning-text);
+  border-color: var(--status-warning-border);
+}
+
+.gov-badge.danger {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-text);
+  border-color: var(--status-danger-border);
+}
+
+.gov-badge.info {
+  background: var(--status-info-bg);
+  color: var(--status-info-text);
+  border-color: var(--status-info-border);
+}
+
+/* Thẻ điều kiện thực thi (Pre-condition Notification Cards & Badges) */
+.condition-box {
+  background: var(--gov-secondary-bg);
+  border: 1px solid var(--gov-border);
+  border-left: 3px solid var(--gov-border-strong);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: var(--gov-text-body);
+  margin-top: 8px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.condition-box.warning {
+  border-left-color: #d97706;
+  background: var(--status-warning-bg);
+  color: var(--status-warning-text);
+}
+
+.condition-box.met {
+  border-left-color: #16a34a;
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+}
+
+.condition-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.condition-tag.required {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.condition-tag.ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Hộp thông báo cảnh báo (Alerts) */
+.gov-alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  border: 1px solid var(--gov-border);
+}
+
+.gov-alert.info {
+  background: var(--status-info-bg);
+  color: var(--status-info-text);
+  border-color: var(--status-info-border);
+}
+
+.gov-alert.warning {
+  background: var(--status-warning-bg);
+  color: var(--status-warning-text);
+  border-color: var(--status-warning-border);
+}
+
+.gov-alert.danger {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-text);
+  border-color: var(--status-danger-border);
+}
+
+.gov-alert.success {
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+  border-color: var(--status-success-border);
+}
+
+/* Nút bấm (Buttons) */
+.gov-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.gov-btn-primary {
+  background: var(--gov-primary);
+  color: var(--gov-primary-text);
+  border-color: var(--gov-primary);
+}
+
+.gov-btn-primary:hover:not(:disabled) {
+  background: var(--gov-primary-hover);
+}
+
+.gov-btn-secondary {
+  background: var(--gov-secondary-bg);
+  color: var(--gov-secondary-text);
+  border-color: var(--gov-secondary-border);
+}
+
+.gov-btn-secondary:hover:not(:disabled) {
+  background: var(--gov-secondary-hover);
+}
+
+.gov-btn-danger {
+  background: #991b1b;
+  color: #ffffff;
+  border-color: #7f1d1d;
+}
+
+.gov-btn-danger:hover:not(:disabled) {
+  background: #7f1d1d;
+}
+
+.gov-btn-sm {
+  padding: 5px 10px;
+  font-size: 0.78rem;
+}
+
+.gov-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Bảng dữ liệu (Tables) */
+.gov-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--gov-border);
   border-radius: var(--radius-sm);
 }
 
-/* NFT Cards */
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+.gov-table th {
+  background: var(--gov-secondary-bg);
+  padding: 10px 14px;
+  font-weight: 700;
+  color: var(--gov-text-title);
+  border-bottom: 1px solid var(--gov-border);
+}
+
+.gov-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gov-border);
+  color: var(--gov-text-body);
+}
+
+.gov-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Thanh tiến độ (Progress bar) */
+.gov-progress {
+  height: 6px;
+  background: var(--gov-border);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.gov-progress-fill {
+  height: 100%;
+  background: #475569;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.gov-progress-fill.success {
+  background: #16a34a;
+}
+
+/* Lưới thẻ NFT */
 .nft-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  gap: 16px;
 }
 
 .nft-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
+  background: var(--gov-card-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  transition: var(--transition);
   display: flex;
   flex-direction: column;
 }
 
-.nft-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-glow);
-  box-shadow: 0 12px 30px rgba(0, 242, 254, 0.15);
-}
-
-.nft-image-wrap {
+.nft-card img {
   width: 100%;
-  aspect-ratio: 1;
-  background: #111827;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nft-image-wrap img, .nft-image-wrap svg {
-  width: 100%;
-  height: 100%;
+  height: 190px;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  background: var(--gov-secondary-bg);
+  border-bottom: 1px solid var(--gov-border);
 }
 
-.nft-card:hover .nft-image-wrap img {
-  transform: scale(1.05);
-}
-
-.nft-badge-price {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  border: 1px solid rgba(0, 242, 254, 0.4);
-}
-
-.nft-info {
-  padding: 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.nft-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.nft-collection {
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  margin-bottom: 12px;
-}
-
-/* Proposals */
-.proposal-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.proposal-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  transition: var(--transition);
-}
-
-.proposal-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.proposal-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.proposal-id {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent-cyan);
-  margin-bottom: 4px;
-}
-
-.proposal-desc {
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.state-badge {
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.state-active { background: var(--accent-cyan-dim); color: var(--accent-cyan); }
-.state-succeeded { background: var(--accent-emerald-dim); color: var(--accent-emerald); }
-.state-queued { background: var(--accent-purple-dim); color: var(--accent-purple); }
-.state-executed { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
-.state-canceled { background: var(--accent-rose-dim); color: var(--accent-rose); }
-
-/* Attacks & Simulator Terminal */
-.terminal-card {
-  background: #060911;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  font-family: var(--font-mono);
-}
-
-.terminal-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 12px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.terminal-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.dot-red { background: #ff5f56; }
-.dot-yellow { background: #ffbd2e; }
-.dot-green { background: #27c93f; }
-
-.terminal-logs {
-  height: 280px;
-  overflow-y: auto;
-  font-size: 0.85rem;
-  line-height: 1.7;
-}
-
-.log-entry {
-  display: flex;
-  gap: 12px;
-  padding: 4px 0;
-}
-.log-time { color: var(--text-dim); }
-.log-success { color: var(--accent-emerald); }
-.log-error { color: var(--accent-rose); font-weight: 600; }
-.log-info { color: var(--accent-cyan); }
-
-/* Invariant Badges */
-.invariant-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
-  margin-top: 16px;
-}
-
-.invariant-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+.nft-card-body {
   padding: 14px;
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  transition: var(--transition);
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.invariant-card:hover {
-  border-color: rgba(16, 185, 129, 0.4);
-  background: rgba(16, 185, 129, 0.03);
-}
-
-.inv-badge {
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-family: var(--font-mono);
+.nft-card-title {
   font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gov-text-title);
+}
+
+.nft-card-meta {
   font-size: 0.78rem;
-  background: var(--accent-emerald-dim);
-  color: var(--accent-emerald);
+  color: var(--gov-text-muted);
+  margin-bottom: 8px;
 }
 
-.inv-info h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 2px;
+/* Khung sao chép thông tin (Copy blocks) */
+.copy-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gov-secondary-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--gov-text-title);
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.inv-info p {
+.copy-block code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Audit log */
+.audit-log-box {
+  background: var(--gov-card-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-muted);
 }
 
-/* Toast notifications */
+.audit-log-row {
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--gov-border);
+  display: flex;
+  gap: 8px;
+}
+
+.audit-log-row:last-child {
+  border-bottom: none;
+}
+
+.audit-log-time {
+  color: var(--gov-text-muted);
+  white-space: nowrap;
+}
+
+.audit-log-msg.error {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.audit-log-msg.success {
+  color: #16a34a;
+}
+
+/* Toast Container */
 .toast-container {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 1000;
+  gap: 8px;
+  z-index: 9999;
 }
 
 .toast {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  min-width: 320px;
-  max-width: 440px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--gov-card-bg);
+  color: var(--gov-text-title);
+  border: 1px solid var(--gov-border);
+  border-left: 4px solid var(--gov-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-md);
+  min-width: 300px;
+  max-width: 420px;
 }
 
-.toast.success { border-color: rgba(16, 185, 129, 0.5); }
-.toast.error { border-color: rgba(244, 63, 94, 0.6); }
+.toast.success {
+  border-left-color: #16a34a;
+}
 
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+.toast.error {
+  border-left-color: #dc2626;
 }
 
 /* Modal */
-.modal-backdrop {
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 9000;
   padding: 20px;
 }
 
-.modal-content {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  max-width: 560px;
+.modal-box {
+  background: var(--gov-card-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  max-width: 580px;
   width: 100%;
-  padding: 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-md);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gov-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gov-text-title);
+}
+
+.modal-body {
+  padding: 18px;
+}
+
+.modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--gov-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .form-label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gov-text-title);
+  margin-bottom: 4px;
 }
 
-.form-input {
+.form-control {
   width: 100%;
-  padding: 12px 14px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
+  padding: 8px 12px;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  outline: none;
-  transition: var(--transition);
+  font-size: 0.85rem;
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  background: var(--gov-card-bg);
+  color: var(--gov-text-title);
 }
 
-.form-input:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+.form-control:focus {
+  outline: none;
+  border-color: var(--gov-primary);
 }
+
+.contract-config-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contract-config-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contract-config-row label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gov-text-muted);
+}
+
+.contract-config-row input {
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  background: var(--gov-secondary-bg);
+  color: var(--gov-text-title);
+}
+
+/* ==========================================================================
+   ACCORDION & DROP-DOWN STYLES (TRANG HƯỚNG DẪN & TÀI LIỆU)
+   ========================================================================== */
+.gov-accordion {
+  background: var(--gov-card-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.gov-accordion[open] {
+  border-color: var(--gov-border-strong);
+}
+
+.gov-accordion summary {
+  padding: 13px 18px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--gov-text-title);
+  cursor: pointer;
+  background: var(--gov-secondary-bg);
+  user-select: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.gov-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.gov-accordion summary:hover {
+  background: var(--gov-secondary-hover);
+}
+
+.gov-accordion summary::after {
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gov-text-muted);
+}
+
+.gov-accordion[open] summary::after {
+  content: "−";
+}
+
+.gov-accordion-content {
+  padding: 18px;
+  border-top: 1px solid var(--gov-border);
+  color: var(--gov-text-body);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.guide-step-card {
+  background: var(--gov-secondary-bg);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.guide-step-title {
+  font-weight: 700;
+  color: var(--gov-text-title);
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+}
+

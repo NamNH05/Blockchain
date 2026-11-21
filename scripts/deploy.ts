@@ -1,4 +1,6 @@
 import { ethers } from "hardhat";
+import * as fs from "fs";
+import * as path from "path";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
@@ -107,6 +109,27 @@ async function main() {
   await (await treasury.renounceRole(TREASURY_ADMIN_ROLE, deployer.address)).wait();
 
   console.log("✓ Permissions secured: Timelock and Treasury are now purely community-governed!");
+
+  // Export addresses to frontend
+  const deployedAddresses = {
+    GovToken: await token.getAddress(),
+    TimelockController: await timelock.getAddress(),
+    NFTTreasury: await treasury.getAddress(),
+    NFTDaoGovernor: await governor.getAddress(),
+    MockMarketplace: await marketplace.getAddress(),
+    SafeMarketplaceAdapter: await adapter.getAddress(),
+  };
+
+  const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir, { recursive: true });
+  }
+  fs.writeFileSync(
+    path.join(contractsDir, "deployed.json"),
+    JSON.stringify(deployedAddresses, null, 2)
+  );
+  console.log("✓ Deployed contract addresses exported to frontend/src/contracts/deployed.json");
+
   console.log("\nDeployment completed successfully!");
 }
 

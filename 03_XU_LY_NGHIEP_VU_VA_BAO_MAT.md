@@ -44,7 +44,7 @@ Hàm này niêm yết hoặc bán trực tiếp một NFT đang thuộc quyền 
 #### Thuật toán thực thi từng bước:
 1. **Kiểm tra điều kiện tiên quyết**:
    - Chỉ Timelock được gọi, không bị Pause, chưa quá deadline.
-   - Adapter nằm trong Whitelist.
+   - Adapter nằm trong whitelist. Mã hiện tại không kiểm tra whitelist collection trong luồng bán.
    - `IERC721(collection).ownerOf(tokenId) == address(this)`: Treasury bắt buộc phải đang sở hữu NFT.
 2. **Cấp quyền chuyển nhượng tối thiểu (Scoped Approval)**:
    - `IERC721(collection).approve(adapter, tokenId);`
@@ -91,7 +91,7 @@ function propose(
     }
 
     require(
-        totalProposalMaxPrice <= MAX_PER_PROPOSAL_LIMIT,
+        totalProposalMaxPrice <= maxPerProposalLimit,
         "Governor: Total maxPrice exceeds proposal spending limit"
     );
 
@@ -141,11 +141,11 @@ Do EVM không có cơ chế cron job tự động đổi cờ boolean sau thời
 | :--- | :--- | :--- |
 | **1. Ăn chặn tiền thừa (Excess Theft)** | Adapter mua NFT giá 1 ETH nhưng giữ 1 ETH từ trần 2 ETH gửi sang | Treasury kiểm tra `balanceBefore - balanceAfter == actualPrice`. Nếu Adapter không gửi trả 1 ETH thừa, số dư bị giảm 2 ETH $\ne$ 1 ETH $\rightarrow$ Revert toàn bộ |
 | **2. Gian lận báo cáo giá (Fake Price Reporting)** | Adapter mua giá 2 ETH nhưng báo `actualPrice = 1 ETH` | Lượng ETH thực mất là 2 ETH $\ne 1$ ETH đã báo $\rightarrow$ Revert do `netSpent != actualPrice` |
-| **3. Lách trần chi tiêu bằng Multi-call** | Tạo proposal chứa 5 lệnh mua 4 ETH (tổng 20 ETH) để vượt trần 10 ETH | `NFTDaoGovernor.propose()` giải mã toàn bộ calldatas và cộng dồn $\sum maxPrice$. Nếu $> 10$ ETH $\rightarrow$ Revert ngay lúc tạo đề xuất |
-| **4. Tấn công ranh giới ngày (Boundary Attack)** | Mua 10 ETH lúc 23:59 và mua tiếp 10 ETH lúc 00:01 hôm sau | Hạn ngạch chia theo chu kỳ 24h (`block.timestamp / 1 days`). Thiệt hại tối đa bị chặn ở $2 \times DAILY\_LIMIT$, không thể vét cạn toàn bộ quỹ |
+| **3. Lách trần chi tiêu bằng Multi-call** | Tạo proposal chứa nhiều lệnh mua có tổng maxPrice vượt giới hạn proposal | `NFTDaoGovernor.propose()` giải mã toàn bộ calldatas và cộng dồn $\sum maxPrice$. Nếu vượt `maxPerProposalLimit` (script triển khai mẫu đặt 8 ETH) $\rightarrow$ Revert ngay lúc tạo đề xuất |
+| **4. Tấn công ranh giới ngày (Boundary Attack)** | Giao dịch sát hai phía của mốc 00:00 UTC thuộc hai ngày kế tiếp do dùng block.timestamp / 1 days | Hạn mức được tính theo ngày UTC; ngoài hạn mức ngày, mỗi lệnh mua còn chịu maxPerCallLimit. Với script mẫu, các mức tương ứng là 10 ETH/ngày và 5 ETH/lệnh |
 | **5. Flash Loan Voting Power** | Vay lượng lớn token trong cùng block để bỏ phiếu thao túng | `ERC20Votes` chốt Snapshot tại `proposalSnapshot = proposalCreatedAt + votingDelay`. Lượng token vay sau đó không có điểm voting tại Snapshot |
 | **6. Quên ủy quyền (No Delegation)** | Mua token nhưng không gọi `delegate()` trước Snapshot | `getPastVotes(account, snapshot)` trả về 0. Giao dịch biểu quyết bị Governor từ chối |
-| **7. Reentrancy từ Marketplace / Adapter** | Hợp đồng bên ngoài gọi ngược lại Treasury khi đang thực hiện giao dịch | Toàn bộ hàm thay đổi tài sản đều được bảo vệ bởi `nonReentrant` của OpenZeppelin |
+| **7. Reentrancy từ Marketplace / Adapter** | Hợp đồng bên ngoài gọi ngược lại Treasury khi đang thực hiện giao dịch | Hai hàm giao dịch `executeBuyNFT` và `executeSellNFT` được bảo vệ bởi `nonReentrant` của OpenZeppelin |
 | **8. Thực thi sau khi hết hạn (Expired Execution)** | Đề xuất nằm trong Timelock bị lãng quên, thị trường biến động, kẻ xấu kích hoạt sau vài tháng | Hàm `executeBuyNFT` kiểm tra `require(block.timestamp <= deadline)`. Nếu quá hạn $\rightarrow$ Revert |
 | **9. Chiếm đoạt quyền Admin** | Deployer bị lộ Private Key | Ngay sau khi khởi tạo xong, Deployer gọi `renounceRole` và `revokeRole`, chuyển quyền quản trị duy nhất về chính `TimelockController` |
 

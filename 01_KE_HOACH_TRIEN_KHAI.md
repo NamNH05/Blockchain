@@ -16,7 +16,7 @@ Tài liệu này xác định lộ trình thực hiện, các giai đoạn phát
 ```
 ┌────────────────────────────────────────────────────────┐
 │ GIAI ĐOẠN 1: KHỞI TẠO MÔI TRƯỜNG & HỢP ĐỒNG KHO BẠC   │
-│ - Cấu hình dự án (Foundry/Hardhat)                    │
+│ - Cấu hình dự án Hardhat (toolchain hiện tại)          │
 │ - Viết INFTMarketplaceAdapter.sol                      │
 │ - Viết NFTTreasury.sol (Hạn mức ngày, Pause, Refund)   │
 └────────────────────────────────────────────────────────┘
@@ -42,7 +42,7 @@ Tài liệu này xác định lộ trình thực hiện, các giai đoạn phát
 ┌────────────────────────────────────────────────────────┐
 │ GIAI ĐOẠN 4: TÍCH HỢP TOÀN DIỆN & BỘ KIỂM THỬ BẢO MẬT │
 │ - Chạy toàn bộ 11 kịch bản kiểm thử bảo mật (SEC-01..11)│
-│ - Đo lường độ bao phủ mã nguồn (Coverage > 95%)        │
+│ - Đo lường và ghi nhận coverage; ngưỡng >95% là mục tiêu│
 │ - Đóng gói tài liệu báo cáo kỹ thuật                   │
 └────────────────────────────────────────────────────────┘
 ```
@@ -91,7 +91,7 @@ Tài liệu này xác định lộ trình thực hiện, các giai đoạn phát
 ### Giai đoạn 4: Bộ kiểm thử Bảo mật & Đánh giá
 - [x] Viết bộ test `TreasurySecurityTest`: Thực thi các kịch bản SEC-01 đến SEC-08 và SEC-11.
 - [x] Viết bộ test `GovernorGovernanceTest`: Thực thi các kịch bản SEC-05, SEC-06, SEC-07, SEC-09, SEC-10.
-- [x] Chạy kiểm tra Code Coverage, tối ưu hóa Gas.
+- [x] Chạy kiểm tra Code Coverage; mục tiêu coverage >95% trong kế hoạch không được xem là kết quả nếu chưa có báo cáo đo lường tương ứng.
 - [x] Tổng hợp báo cáo kết quả kiểm thử.
 
 ---

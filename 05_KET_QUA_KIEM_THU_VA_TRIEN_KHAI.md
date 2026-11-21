@@ -4,9 +4,9 @@ Tài liệu này tổng hợp chi tiết kết quả thực thi toàn bộ 19 b�
 
 ---
 
-## 1. TỔNG QUAN KẾT QUẢ THỰC THI (EXECUTIVE SUMMARY)
+## 1. KẾT QUẢ ĐƯỢC GHI NHẬN TRONG TÀI LIỆU (EXECUTIVE SUMMARY)
 
-- **Tổng số kịch bản kiểm thử**: `19 / 19` bài test đạt chuẩn (**100% Passed**).
+- **Kết quả được ghi nhận trong báo cáo đi kèm**: 19/19 bài kiểm thử đạt.
 - **Thời gian chạy bộ test**: `~2.0 giây`.
 - **Trạng thái biên dịch**: `Compiled 38 Solidity files successfully (evm target: cancun)`.
 - **Độ bao phủ dòng mã (Line Coverage)**:
@@ -19,7 +19,7 @@ Tài liệu này tổng hợp chi tiết kết quả thực thi toàn bộ 19 b�
 
 ## 2. MA TRẬN 11 BÀI KIỂM THỬ BẢO MẬT (SECURITY ACCEPTANCE MATRIX)
 
-Toàn bộ 11 bài kiểm thử đối kháng (Adversarial Security Tests) đã được tự động hóa tại [`test/NFTTreasury.spec.ts`](file:///d:/Visual%20studio%20code/Blockchain/test/NFTTreasury.spec.ts) và [`test/GovernanceSecurity.spec.ts`](file:///d:/Visual%20studio%20code/Blockchain/test/GovernanceSecurity.spec.ts):
+Các bài kiểm thử đối kháng (Adversarial Security Tests) được mô tả trong bộ test tại [`test/NFTTreasury.spec.ts`](file:///d:/Visual%20studio%20code/Blockchain/test/NFTTreasury.spec.ts) và [`test/GovernanceSecurity.spec.ts`](file:///d:/Visual%20studio%20code/Blockchain/test/GovernanceSecurity.spec.ts):
 
 | Mã Test | Vector tấn công / Kịch bản kiểm tra | File Test & Vị trí | Kỳ vọng nghiệp vụ | Kết quả thực tế | Trạng thái |
 | :---: | :--- | :--- | :--- | :--- | :---: |
@@ -37,9 +37,9 @@ Toàn bộ 11 bài kiểm thử đối kháng (Adversarial Security Tests) đã 
 
 ---
 
-## 3. BẢNG CHI TIẾT ĐỘ BAO PHỦ MÃ NGUỒN (COVERAGE REPORT)
+## 3. BẢNG ĐỘ BAO PHỦ MÃ NGUỒN ĐƯỢC GHI NHẬN (COVERAGE REPORT)
 
-Kết quả đo lường tự động bởi công cụ `solidity-coverage`:
+Bảng dưới đây là kết quả được lưu trong tài liệu/báo cáo coverage của dự án; cần chạy lại `npm run coverage` để xác nhận với trạng thái mã nguồn hiện tại.
 
 ```
 ----------------------------------|----------|----------|----------|----------|----------------|
@@ -64,7 +64,7 @@ File                              |  % Stmts | % Branch |  % Funcs |  % Lines | 
 ----------------------------------|----------|----------|----------|----------|----------------|
 ```
 
-> **Nhận xét**: Toàn bộ các hợp đồng lõi vận hành trực tiếp tài sản của DAO (`NFTTreasury.sol`, `SafeMarketplaceAdapter.sol`, `GovToken.sol`) đều đạt **100% dòng lệnh (Lines)** và **100% hàm (Functions)**.
+> **Nhận xét**: Số liệu coverage là số liệu tại lần chạy được ghi nhận, không tự chứng minh chất lượng hay mức độ an toàn; `NFTDaoGovernor.sol` và các nhánh của một số hợp đồng chưa đạt 100%.
 
 ---
 
@@ -85,7 +85,7 @@ Bài test E2E kiểm chứng chu trình trọn vẹn từ lúc khởi xướng �
 [Execute Proposal]
         │
         ├─> Timelock gọi: NFTTreasury.executeBuyNFT(...)
-        ├─> Treasury chi tối đa maxPrice sang SafeMarketplaceAdapter
+        ├─> Treasury chi tối đa maxPrice sang SafeMarketplaceAdapter (trong script triển khai mẫu kết nối MockMarketplace)
         ├─> Adapter khớp lệnh tại Marketplace với giá thực tế
         ├─> Adapter nhận NFT và chuyển giao sang Treasury
         ├─> Adapter hoàn trả toàn bộ ETH dư thừa về lại Treasury
